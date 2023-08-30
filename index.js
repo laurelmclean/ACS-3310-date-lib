@@ -52,16 +52,22 @@ class Dately {
     }
 
     get ordinal() {
-        const lastDigit = this._date.getDate() % 10
+        const day = this._date.getDate();
+
+        if (day === 11 || 12 || 13) {
+            return day + 'th';
+        }
+
+        const lastDigit = day % 10;
         switch (lastDigit) {
-            case '1':
-                return this._date.getDate() + 'st'
-            case '2':
-                return this._date.getDate() + 'nd'
-            case '3':
-                return this._date.getDate() + 'rd'
+            case 1:
+                return day + 'st';
+            case 2:
+                return day + 'nd';
+            case 3:
+                return day + 'rd';
             default:
-                return this._date.getDate() + 'th'
+                return day + 'th';
         }
     }
 
@@ -81,6 +87,8 @@ class Dately {
                     return this.date.toString().padStart(2, '0')
                 case 'd':
                     return this.date
+                case '#':
+                    return this.ordinal
                 case 'L':
                     return this.day
                 case 'l':
@@ -135,7 +143,7 @@ class Dately {
 }
 
 const now = new Dately();
-const bday = new Dately('1/24/2023');
+const bday = new Dately(2023, 9, 30);
 const epoch = new Dately(1970, 1, 1, 0, 0, 0);
 
 console.log(now._date.getDate());
@@ -150,5 +158,5 @@ console.log(bday.mon);
 console.log(bday.ordinal);
 
 console.log(now.format())
-console.log(bday.format('L m-d-y H:I:S'))
-console.log(now.when())
+console.log(bday.format('L m-d-y # H:I:S'))
+console.log(bday.when())
