@@ -204,3 +204,5 @@ class Dately {
 
     }
 }
+
+module.exports = Dately;
