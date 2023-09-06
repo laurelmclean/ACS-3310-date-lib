@@ -1,6 +1,6 @@
 {
-  "name": "dately",
-  "version": "1.0.0",
+  "name": "dately-lib",
+  "version": "1.0.1",
   "description": "A date library for handling and formatting dates and calculating time differences from the current date.",
   "main": "src/index.js",
   "scripts": {

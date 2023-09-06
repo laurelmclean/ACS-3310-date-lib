@@ -1,5 +1,11 @@
 # Dately - Date Formatting and Comparison Utility
 
+[![npm version](https://img.shields.io/npm/v/dately-lib.svg)](https://www.npmjs.com/package/dately-lib)
+[![npm downloads](https://img.shields.io/npm/dt/dately-lib.svg)](https://www.npmjs.com/package/dately-lib)
+[![GitHub issues](https://img.shields.io/github/issues/laurelmclean/ACS-3310-date-lib.svg)](https://github.com/laurelmclean/ACS-3310-date-lib/issues)
+
+[NPM Package](https://www.npmjs.com/package/dately-lib)
+
 Dately is a JavaScript class that provides a versatile and user-friendly way to work with dates, offering functions to format dates in various ways and determine their relation to the present time. This utility aims to simplify date manipulation and formatting tasks, making it easier for developers to work with dates in their applications.
 
 ## Features
@@ -11,7 +17,13 @@ Dately is a JavaScript class that provides a versatile and user-friendly way to 
 ## Usage
 
 1. **Installation:**
-   Copy and paste the Dately class into your JavaScript project.
+    ```javascript
+   npm i dately-lib
+   ```
+
+    ```javascript
+   const Dately = require('dately-lib');
+   ```
 
 2. **Creating a Dately Instance:**
    To work with a specific date, create a new Dately instance by providing a date string or date components as constructor arguments.
