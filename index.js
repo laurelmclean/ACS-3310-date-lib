@@ -5,52 +5,104 @@ const monthsAbrv = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 const daysAbrv = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat']
 
+/**
+ * Represents a utility class for working with dates and formatting them.
+ */
+
 class Dately {
+    /**
+     * Creates a new Dately instance.
+     * @param {...*} args - Arguments to initialize the date.
+     */
 	constructor(...args) {
 		this._date = new Date(...args);
 	}
 
     // Getters
+    /**
+     * Get the year of the date.
+     * @returns {number} - The year.
+     */
     get year() {
         return this._date.getFullYear();
     }
 
+    /**
+     * Get the last two digits of the year.
+     * @returns {number} - The year in two digits.
+     */
     get yr() {
         return this._date.getFullYear() % 100;
     }
 
+    /**
+     * Get the day of the month.
+     * @returns {number} - The day of the month.
+     */
     get date() {
         return this._date.getDate();
     }
 
+    /**
+     * Get the hours of the time.
+     * @returns {number} - The hours.
+     */
     get hours() {
         return this._date.getHours();
     }
 
+    /**
+     * Get the hours of the time.
+     * @returns {number} - The hours.
+     */
     get mins() {
         return this._date.getMinutes();
     }
 
+    /**
+    * Get the seconds of the time.
+    * @returns {number} - The seconds.
+    */
     get secs() {
         return this._date.getSeconds();
     }
 
+    /**
+     * Get the full name of the day of the week.
+     * @returns {string} - The full day name.
+     */
     get day() {
         return days[this._date.getDay()];
     }
 
+    /**
+     * Get the abbreviated name of the day of the week.
+     * @returns {string} - The abbreviated day name.
+     */
     get dy() {
         return daysAbrv[this._date.getDay()];
     }
 
+    /**
+     * Get the full name of the month.
+     * @returns {string} - The full month name.
+     */
     get month() {
         return months[this._date.getMonth()];
     }
 
+    /**
+     * Get the abbreviated name of the month.
+     * @returns {string} - The abbreviated month name.
+     */
     get mon() {
         return monthsAbrv[this._date.getMonth()];
     }
 
+    /**
+     * Get the ordinal representation of the day (e.g., "1st", "2nd", "3rd", "4th").
+     * @returns {string} - The ordinal representation.
+     */
     get ordinal() {
         const day = this._date.getDate();
 
@@ -72,6 +124,12 @@ class Dately {
     }
 
     // Format
+
+    /**
+     * Format the date using a mask.
+     * @param {string} [mask='Y M D'] - The format mask.
+     * @returns {string} - The formatted date string.
+     */
     format(mask = 'Y M D') {
         const dateStr = mask.split('').map(char => {
             switch (char) {
@@ -113,6 +171,11 @@ class Dately {
     }
 
     // When
+
+    /**
+     * Calculate the relative time difference from the current date.
+     * @returns {string} - A string describing the time difference.
+     */
     when() {
         const now = new Date();
         const diff = now - this._date;
@@ -141,22 +204,3 @@ class Dately {
 
     }
 }
-
-const now = new Dately();
-const bday = new Dately(2023, 9, 30);
-const epoch = new Dately(1970, 1, 1, 0, 0, 0);
-
-console.log(now._date.getDate());
-console.log(now.year);
-console.log(bday.yr);
-console.log(now.date);
-console.log(now.mins);
-console.log(now.hours);
-console.log(now.day);
-console.log(bday.month);
-console.log(bday.mon);
-console.log(bday.ordinal);
-
-console.log(now.format())
-console.log(bday.format('L m-d-y # H:I:S'))
-console.log(bday.when())
